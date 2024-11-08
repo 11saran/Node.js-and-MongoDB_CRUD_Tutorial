@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDb CRUD Tutorial</title>
+</head>
+<body>
+    <h1>MongoDB CRUD Tutorial</h1>
+    {{message}}
+<br>
+<h3>Create</h3>
+<form method="post" action="/store_book">
+
+<label for="">Title</label>
+<input type="text" name ="title" placeholder="Title">
+<label for="">Author</label>
+<input type="text" name="author" placeholder="Author">
+<input type="submit">
+
+</form>
+<br><br>
+
+<br>
+<h3>Edit</h3>
+<form method="post" action="/update_book/{{edit_id}}">
+
+<label for="">Title</label>
+<input type="text" name ="title" placeholder="Title" value="{{edit_book.title}}">
+<label for="">Author</label>
+<input type="text" name="author" placeholder="Author" value="{{edit_book.author}}">
+<input type="submit">
+
+</form>
+<br><br>
+
+
+  <ul>
+    {{#each books}}
+    <li>{{this.title}} - {{this.author}} </li>
+    {{/each}}
+  </ul>
+
+    <style>
+        h1{
+            color: rgb(3, 137, 41);
+        }
+    </style>
+</body>
+</html>
