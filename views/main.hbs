@@ -9,19 +9,7 @@
     <h1>MongoDB CRUD Tutorial</h1>
     {{message}}
 <br>
-<h3>Create</h3>
-<form method="post" action="/store_book">
-
-<label for="">Title</label>
-<input type="text" name ="title" placeholder="Title">
-<label for="">Author</label>
-<input type="text" name="author" placeholder="Author">
-<input type="submit">
-
-</form>
-<br><br>
-
-<br>
+{{#if edit_id }}
 <h3>Edit</h3>
 <form method="post" action="/update_book/{{edit_id}}">
 
@@ -33,11 +21,27 @@
 
 </form>
 <br><br>
+{{else}}
+<h3>Create</h3>
+<form method="post" action="/store_book">
+
+<label for="">Title</label>
+<input type="text" name ="title" placeholder="Title">
+<label for="">Author</label>
+<input type="text" name="author" placeholder="Author">
+<input type="submit">
+
+</form>
+<br><br>
+{{/if}}
+
+<br>
+
 
 
   <ul>
     {{#each books}}
-    <li>{{this.title}} - {{this.author}} </li>
+    <li>{{this.title}} - {{this.author}} <a href="/?edit_id={{this._id}}">Edit</a> </li>
     {{/each}}
   </ul>
 
